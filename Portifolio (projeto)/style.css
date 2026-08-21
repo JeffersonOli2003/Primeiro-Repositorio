@@ -1,0 +1,41 @@
+body {
+     background-color: rgb(255, 255, 255);
+}
+
+.info {
+     background-color: antiquewhite;
+     font-family: sans-serif;
+     font-weight: bold;
+     font-style: italic;
+     font-size: x-large;
+     color: rgb(0, 0, 0);
+}
+
+.contato {
+     color: rgb(255, 255, 255);
+     background-color: rgb(182, 165, 144);
+     display: flex;
+     flex-direction: row;
+     border: 2px solid rgb(0, 0, 0);
+     justify-content: space-around;
+}
+
+.sobre {
+     color:white;
+     background-color: rgb(182, 165, 144);
+     border: 2px solid black;
+}
+
+.mim {
+     font-family: Arial, Helvetica, sans-serif;  /* aqui voce coloca a fonte que deseja*/
+     font-weight: bold; /* a tag bold é para ficar em negrito*/
+     font-style: italic; /*para colocar em italico, etc*/
+     color: rgb(255, 255, 255);
+     font-size: medium;
+}
+
+.bio {
+     font-family: Arial, Helvetica, sans-serif; /* aqui voce coloca a fonte que deseja*/
+     color: rgb(253, 253, 253);
+     font-size: small;
+}
