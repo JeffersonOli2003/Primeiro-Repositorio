@@ -26,18 +26,19 @@ body a:hover{
      font-weight: bold;
 }
 #apres{
-     padding-top: 80px;
+     padding-top: 90px; /*para descer ou subir o nome jefferson e a area de trabalho*/
      margin-bottom: 20px;
      color: #FFFFFF;
 }
 
 #sobre{
+     padding-top: 100px;
      margin:20px 0px;
      color: #FFFFFF;
 }
 
 #habil{
-     margin-top: 20px;
+     margin-top: 100px;
      color: #FFFFFF;
 }
 
