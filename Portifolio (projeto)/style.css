@@ -44,15 +44,17 @@ body a:hover{
 
 footer{
      background-color: #00235f;
-     color: white;
+     color: rgb(255, 255, 255);
 }
 footer ul{
      display: flex;
-     flex-direction: row;
+     justify-content: space-around; /*para ficar com a mesma distancia*/
+     list-style-type: none; /*tirar os pontos*/
 }
 .icone {
-     fill: #FFFFFF;
+     fill: #ffffff;
      stroke: black;
-     stroke-width: 5px;
+     stroke-width: 1px;
      width: 50px;
+     height: 50px;
 }
