@@ -119,7 +119,7 @@ nav a:hover {
 
 
 /* Título principal */
-.apresentacao h1 {
+.apresentacao h1 { /* AQUI É MEU NOME*/
     font-size: 45px;
 
     /* Espaço abaixo do título */
@@ -128,11 +128,12 @@ nav a:hover {
 
 
 /* Subtítulo */
-.apresentacao h2 {
+.apresentacao h2 { /* AQUI É O QUE EU SOU*/
     font-size: 25px;
 
     /* Azul claro */
     color: #028efa;
+    
 }
 
 
@@ -156,6 +157,8 @@ nav a:hover {
 .sobreTexto {
     /* Impede que o texto fique muito largo */
     max-width: 900px;
+    /* Isso aqui faz o texto descer */
+    margin-top: 200px;
 }
 
 
