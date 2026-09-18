@@ -1,0 +1,362 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*CORPO DO SITE */
+
+body {
+    /* Fonte principal do site */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    /* Cor de fundo da página */
+    background-color: #010135;
+
+    /* Cor padrão dos textos */
+    color: #FFFFFF;
+
+    /* Faz a página ocupar pelo menos a altura da tela */
+    min-height: 100vh;
+}
+
+
+/*MENU*/
+
+/* Cabeçalho */
+header {
+    width: 100%;
+
+    /* Cor azul do menu */
+    background-color: #0215bd;
+
+    /* Espaçamento interno */
+    padding: 25px;
+
+    /* Deixa o menu fixo no topo */
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    /* Faz o menu ficar acima dos outros elementos */
+    z-index: 1000;
+}
+
+
+/* Área onde ficam os links */
+nav {
+    display: flex;
+
+    /* Centraliza os links */
+    justify-content: center;
+
+    /* Alinha verticalmente */
+    align-items: center;
+
+    /* Espaço entre os links */
+    gap: 40px;
+
+}
+
+
+/* Links do menu */
+nav a {
+    /* Cor do texto */
+    color: #ffffff;
+
+    /* Retira o sublinhado */
+    text-decoration: none;
+
+    /* Deixa o texto em maiúsculo */
+    text-transform: uppercase;
+
+    /* Deixa o texto em negrito */
+    font-weight: bold;
+
+    /* Tamanho da letra */
+    font-size: 16px;
+
+    /* IMPORTANTE:
+       não colocamos background-color aqui.
+       Assim o link fica transparente e mostra
+       o fundo azul do menu. */
+}
+
+
+/* Quando passar o mouse no link */
+nav a:hover {
+    color: #FFFFFF;
+
+    /* Aparece o sublinhado */
+    text-decoration: underline;
+}
+
+
+/* ================================
+   APRESENTAÇÃO
+   ================================ */
+
+#apres {
+    /* Altura mínima da seção */
+    min-height: 400px;
+
+    /* Espaço para não ficar escondido atrás
+       do menu fixo */
+    padding-top: 150px;
+
+    /* Espaço do lado esquerdo */
+    padding-left: 50px;
+
+    /* Usa Flexbox */
+    display: flex;
+
+    /* Centraliza verticalmente */
+    align-items: center;
+}
+
+
+/* Título principal */
+.apresentacao h1 {
+    font-size: 45px;
+
+    /* Espaço abaixo do título */
+    margin-bottom: 15px;
+}
+
+
+/* Subtítulo */
+.apresentacao h2 {
+    font-size: 25px;
+
+    /* Azul claro */
+    color: #028efa;
+}
+
+
+/* ================================
+   SOBRE MIM
+   ================================ */
+
+#sobre {
+    /* Espaçamento interno */
+    padding: 80px 50px;
+
+    /* Flexbox */
+    display: flex;
+
+    /* Centraliza o conteúdo */
+    justify-content: center;
+}
+
+
+/* Área do texto */
+.sobreTexto {
+    /* Impede que o texto fique muito largo */
+    max-width: 900px;
+}
+
+
+/* Título "Sobre mim" */
+.sobreTexto h3 {
+    font-size: 30px;
+
+    margin-bottom: 25px;
+}
+
+
+/* Parágrafo */
+.sobreTexto p {
+    font-size: 17px;
+
+    /* Espaçamento entre as linhas */
+    line-height: 1.8;
+
+    /* Deixa o texto justificado */
+    text-align: justify;
+}
+
+
+/* ================================
+   HABILIDADES
+   ================================ */
+
+#habil {
+    padding: 80px 50px;
+
+    /* Centraliza os textos */
+    text-align: center;
+}
+
+
+/* Título da seção */
+#habil h3 {
+    font-size: 30px;
+
+    margin-bottom: 50px;
+}
+
+
+/* Container das habilidades */
+.skillsContainer {
+    display: flex;
+
+    /* Centraliza os blocos */
+    justify-content: center;
+
+    /* Espaço entre os blocos */
+    gap: 50px;
+}
+
+
+/* Cada bloco de habilidade */
+.skillBlock {
+    width: 300px;
+
+    /* Fundo azul escuro */
+    background-color: #00235f;
+
+    /* Arredonda os cantos */
+    border-radius: 10px;
+
+    /* Espaçamento interno */
+    padding: 30px;
+
+    /* Texto alinhado à esquerda */
+    text-align: left;
+}
+
+
+/* Título dentro do bloco */
+.skillBlock h4 {
+    color: #028efa;
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+
+/* Lista */
+.skillBlock ul {
+    padding-left: 20px;
+}
+
+
+/* Itens da lista */
+.skillBlock li {
+    margin-bottom: 10px;
+}
+
+
+/* ================================
+   RODAPÉ
+   ================================ */
+
+footer {
+    background-color: #00235f;
+
+    padding: 40px;
+
+    /* Centraliza o conteúdo */
+    text-align: center;
+
+    /* Espaço acima do rodapé */
+    margin-top: 50px;
+}
+
+
+/* Título do rodapé */
+footer h5 {
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Texto do rodapé */
+footer p {
+    color: #028efa;
+}
+
+
+/* ================================
+   CELULAR / TABLET
+   ================================ */
+
+/*
+   Essas regras serão usadas quando
+   a tela tiver no máximo 768px.
+*/
+
+@media (max-width: 768px) {
+
+    /* Diminui o espaço entre os links */
+    nav {
+        gap: 15px;
+    }
+
+
+    /* Diminui o tamanho dos links */
+    nav a {
+        font-size: 12px;
+    }
+
+
+    /* APRESENTAÇÃO NO CELULAR */
+    #apres {
+        padding-left: 25px;
+
+        /* Centraliza o texto */
+        text-align: center;
+
+        /* Centraliza horizontalmente */
+        justify-content: center;
+    }
+
+
+    /* Diminui o título */
+    .apresentacao h1 {
+        font-size: 30px;
+    }
+
+
+    /* Diminui o subtítulo */
+    .apresentacao h2 {
+        font-size: 18px;
+    }
+
+
+    /* SOBRE MIM */
+    #sobre {
+        padding: 50px 25px;
+    }
+
+
+    .sobreTexto p {
+        font-size: 15px;
+    }
+
+
+    /* HABILIDADES */
+
+    /* Coloca os blocos um embaixo do outro */
+    .skillsContainer {
+        flex-direction: column;
+
+        /* Centraliza os blocos */
+        align-items: center;
+    }
+
+
+    /* Ajusta a largura dos blocos */
+    .skillBlock {
+        width: 100%;
+
+        max-width: 350px;
+    }
+}
