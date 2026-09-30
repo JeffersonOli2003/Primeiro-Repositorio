@@ -7,16 +7,39 @@
 
 
 /*CORPO DO SITE */
+#simples{
+     background-color: rgba(0, 0, 0, 0);
+     color: #FFFFFF;
+     position: absolute;
+     top: 25px;
+     border: none;
+     transition: 1.0s;
+
+}
+#simples:hover{
+    scale: 150%;
+
+    background-color: #ffffff00;
+
+}
+
+.modoClaro{
+    /* Cor de fundo da página */
+    background-color: #0000ff;
+    /* Cor padrão dos textos */
+    color: #FFFFFF;
+}
+.modoEscuro{
+    /* Cor de fundo da página */
+    background-color: #010135;
+    /* Cor padrão dos textos */
+    color: #FFFFFF;
+}
 
 body {
     /* Fonte principal do site */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-    /* Cor de fundo da página */
-    background-color: #010135;
-
-    /* Cor padrão dos textos */
-    color: #FFFFFF;
 
     /* Faz a página ocupar pelo menos a altura da tela */
     min-height: 100vh;
