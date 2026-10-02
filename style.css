@@ -25,13 +25,13 @@
 
 .modoClaro{
     /* Cor de fundo da página */
-    background-color: #0000ff;
+    background-color: #010135;
     /* Cor padrão dos textos */
     color: #FFFFFF;
 }
 .modoEscuro{
     /* Cor de fundo da página */
-    background-color: #010135;
+    background-color: #0000ff;
     /* Cor padrão dos textos */
     color: #FFFFFF;
 }
@@ -252,8 +252,16 @@ nav a:hover {
 
     /* Texto alinhado à esquerda */
     text-align: left;
+
+    /*Transição do bloco para "Subir"*/
+    transition: 0.5s;
 }
 
+.skillBlock:hover{
+    scale: 105%;
+    color: black;
+    background-color: white;
+}
 
 /* Título dentro do bloco */
 .skillBlock h4 {
