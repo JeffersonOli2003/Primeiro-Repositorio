@@ -317,6 +317,15 @@ footer p {
     color: #028efa;
 }
 
+.projeto{
+    text-align: center;
+}
+
+#guia{
+    color: rgb(255, 255, 255);
+    margin-left:284px;
+}
+
 
 /* ================================
    CELULAR / TABLET
@@ -394,3 +403,4 @@ footer p {
         max-width: 350px;
     }
 }
+
