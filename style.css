@@ -6,6 +6,43 @@
 }
 
 
+/* ================================
+   ANIMAÇÕES (keyframes)
+   ================================ */
+
+/* Entrada do texto da apresentação: sobe e aparece */
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Menu desce suavemente ao carregar a página */
+@keyframes menuDesce {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Linha do subtítulo que se desenha da esquerda pra direita */
+@keyframes linhaCresce {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
 /*CORPO DO SITE */
 #simples{
      background-color: rgba(0, 0, 0, 0);
@@ -13,14 +50,20 @@
      position: absolute;
      top: 25px;
      border: none;
+     cursor: pointer;
      transition: 1.0s;
 
 }
 #simples:hover{
     scale: 150%;
+    rotate: 20deg;
 
     background-color: #ffffff00;
 
+}
+#simples:active{
+    scale: 120%;
+    rotate: 360deg;
 }
 
 .modoClaro{
@@ -43,6 +86,14 @@ body {
 
     /* Faz a página ocupar pelo menos a altura da tela */
     min-height: 100vh;
+
+    /* Troca de modo claro/escuro acontece suave */
+    transition: background-color 0.6s ease;
+}
+
+/* Rolagem suave quando clica nos links do menu */
+html {
+    scroll-behavior: smooth;
 }
 
 
@@ -66,6 +117,9 @@ header {
 
     /* Faz o menu ficar acima dos outros elementos */
     z-index: 1000;
+
+    /* Animação de entrada do menu */
+    animation: menuDesce 0.7s ease-out both;
 }
 
 
@@ -102,19 +156,30 @@ nav a {
     /* Tamanho da letra */
     font-size: 16px;
 
-    /* IMPORTANTE:
-       não colocamos background-color aqui.
-       Assim o link fica transparente e mostra
-       o fundo azul do menu. */
+    /* Necessário para posicionar a linha animada */
+    position: relative;
+}
+
+/* Linha que cresce embaixo do link (no lugar do sublinhado) */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
 }
 
 
 /* Quando passar o mouse no link */
-nav a:hover {
-    color: #FFFFFF;
-
-    /* Aparece o sublinhado */
-    text-decoration: underline;
+nav a:hover::after,
+nav a:focus-visible::after {
+    transform: scaleX(1);
 }
 
 
@@ -147,6 +212,9 @@ nav a:hover {
 
     /* Espaço abaixo do título */
     margin-bottom: 15px;
+
+    /* Entra primeiro */
+    animation: entrada 0.9s ease-out 0.4s both;
 }
 
 
@@ -156,7 +224,22 @@ nav a:hover {
 
     /* Azul claro */
     color: #028efa;
-    
+
+    /* Entra logo depois do nome */
+    animation: entrada 0.9s ease-out 0.75s both;
+}
+
+/* Linha azul que se desenha embaixo do subtítulo */
+.apresentacao h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin-top: 10px;
+    background-color: #028efa;
+
+    transform-origin: left;
+    animation: linhaCresce 0.9s ease-out 1.3s both;
 }
 
 
@@ -253,14 +336,16 @@ nav a:hover {
     /* Texto alinhado à esquerda */
     text-align: left;
 
-    /*Transição do bloco para "Subir"*/
-    transition: 0.5s;
+    /* Transição suave do hover */
+    transition: scale 0.4s ease, background-color 0.4s ease,
+                color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .skillBlock:hover{
     scale: 105%;
     color: black;
     background-color: white;
+    box-shadow: 0 12px 30px rgba(2, 142, 250, 0.35);
 }
 
 /* Título dentro do bloco */
@@ -284,7 +369,21 @@ nav a:hover {
 /* Itens da lista */
 .skillBlock li {
     margin-bottom: 10px;
+
+    /* Item anda um pouquinho quando o bloco está em hover */
+    transition: transform 0.3s ease;
 }
+
+.skillBlock:hover li {
+    transform: translateX(6px);
+}
+
+/* Os itens vão em sequência (efeito cascata) */
+.skillBlock:hover li:nth-child(2) { transition-delay: 0.04s; }
+.skillBlock:hover li:nth-child(3) { transition-delay: 0.08s; }
+.skillBlock:hover li:nth-child(4) { transition-delay: 0.12s; }
+.skillBlock:hover li:nth-child(5) { transition-delay: 0.16s; }
+.skillBlock:hover li:nth-child(6) { transition-delay: 0.20s; }
 
 
 /* ================================
@@ -321,9 +420,95 @@ footer p {
     text-align: center;
 }
 
-.guia{
-    color: rgb(255, 255, 255);
-   align-items: center;
+/* ================================
+   PROJETOS (bloco flutuante)
+   ================================ */
+
+@keyframes flutua {
+    0%, 100% {
+        translate: 0 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+    50% {
+        translate: 0 -14px;
+        box-shadow: 0 28px 32px rgba(0, 0, 0, 0.25);
+    }
+}
+
+#projetos {
+    padding: 80px 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Bloco do projeto */
+.projetoBloco {
+    display: block;
+    width: 300px;
+    padding: 30px;
+
+    background-color: #00235f;
+    border-radius: 10px;
+    border: 1px solid #028efa;
+
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+
+    /* Fica flutuando sem parar */
+    animation: flutua 4s ease-in-out infinite;
+
+    transition: scale 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+}
+
+.projetoBloco h4 {
+    font-size: 22px;
+    color: #028efa;
+    margin-bottom: 10px;
+    transition: color 0.4s ease;
+}
+
+/* Ao passar o mouse: para de flutuar e vem pra frente */
+.projetoBloco:hover,
+.projetoBloco:focus-visible {
+    animation-play-state: paused;
+    scale: 108%;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.projetoBloco:hover h4,
+.projetoBloco:focus-visible h4 {
+    color: #0215bd;
+}
+
+
+/* ================================
+   ENTRADA AO ROLAR A PÁGINA
+   (só em navegadores que suportam;
+   nos outros, tudo aparece normal)
+   ================================ */
+
+@keyframes aparece {
+    from {
+        opacity: 0;
+        translate: 0 40px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@supports (animation-timeline: view()) {
+    .skillBlock {
+        animation: aparece linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+    }
 }
 
 
@@ -404,3 +589,19 @@ footer p {
     }
 }
 
+
+/* ================================
+   ACESSIBILIDADE
+   Quem desativa animações no sistema
+   não vê movimento nenhum.
+   ================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
