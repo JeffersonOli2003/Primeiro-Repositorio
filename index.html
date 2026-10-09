@@ -1,135 +1,234 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
-   <title>Jefferson Oliveira Araujo</title>
-   <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <!-- Sem esta linha o site não se ajusta ao celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jefferson Oliveira Araujo | Programador e Marketing Digital</title>
+    <meta name="description" content="Portfólio de Jefferson Oliveira Araujo, estudante de Técnico em Informática para Internet no SENAC, com foco em desenvolvimento web e marketing digital.">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Define o tema antes da página aparecer (evita piscar branco) -->
+    <script>
+        try {
+            var tema = localStorage.getItem("tema") ||
+                (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+            document.documentElement.setAttribute("data-theme", tema);
+        } catch (e) {}
+    </script>
 </head>
 
-<body id="modoEscuro" class="modoClaro">
-<header>
+<body>
 
-    <nav>
-        <a href="#apres">Início</a>
-        <a href="#sobre">Sobre mim</a>
-        <a href="#habil">Habilidades</a>
-    </nav>
+    <a class="skip-link" href="#sobre">Pular para o conteúdo</a>
 
-    <button id="simples">🌙</button>
-</header>
+    <header class="site-header">
+        <div class="wrap header-inner">
 
 
-<main>
-
-    <section id="apres">
-
-        <div class="apresentacao">
-
-            <h1>Jefferson Oliveira Araujo</h1>
-            <h2>Programador e Marketing digital</h2>
-
-        </div>
-
-    </section>
-
-
-    <section id="sobre">
-
-        <div class="sobreTexto">
-
-            <h3>Sobre mim:</h3>
-
-            <p>
-                Sou apaixonado por tecnologia e estou construindo minha trajetória como futuro programador.
-                Atualmente, curso o Técnico em Informática para Internet no SENAC Largo Treze, onde desenvolvo
-                conhecimentos em programação, desenvolvimento de software e criação de soluções web.
-
-                Busco constantemente ampliar minha formação e desenvolver uma visão multidisciplinar.
-                Pela Fundação Bradesco, conquistei qualificações em Contabilidade Empresarial, Educação
-                Financeira e Postura e Imagem Profissional, fortalecendo tanto meus conhecimentos técnicos
-                quanto minha visão de negócios e postura no ambiente corporativo.
-
-                Também tenho como destaque a conquista de uma medalha de bronze na OBA (Olimpíada Brasileira
-                de Astronomia e Astronáutica), resultado da minha dedicação, raciocínio lógico e interesse
-                por desafios científicos.
-
-                Meu objetivo é continuar aprendendo, transformar conhecimentos em projetos e crescer
-                profissionalmente na área de tecnologia, conectando programação, negócios e inovação.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <section id="habil">
-
-        <h3>Habilidades</h3>
-
-        <div class="skillsContainer">
-
-            <div class="skillBlock">
-
-                <h4>Hard Skills</h4>
-
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Excel, PowerPoint e Word</li>
-                    <li>Canva, Trello e Miro</li>
-                    <li>Microsoft 365</li>
+            <nav aria-label="Menu principal">
+                <ul class="nav-list">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
+            </nav>
 
-            </div>
-
-
-            <div class="skillBlock">
-
-                <h4>Soft Skills</h4>
-
-                <ul>
-                    <li>Comunicativo</li>
-                    <li>Proativo</li>
-                    <li>Compreensivo</li>
-                    <li>Atencioso</li>
-                    <li>Responsável</li>
-                    <li>Medalista Olímpico da OBA</li>
-                </ul>
-
-            </div>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro e escuro">🌙</button>
 
         </div>
-
-    </section>
-
-    <section id="projetos">
-
-    <h1 class="projeto">Projetos</h1>
-
-    <a href="https://jeffersonoli2003.github.io/Guia/" class="projetoBloco">
-        <h4>Meu Guia!</h4>
-        <p>Ver projeto</p>
-    </a>
-
-    </section>
-    <section class="contato">
-        <h2>Contato</h2>
-        
-    </section>
-</main>
+    </header>
 
 
-<footer>
+    <main>
 
-    <h5>Jefferson Oliveira</h5>
+        <!-- INÍCIO -->
+        <section id="inicio">
+            <div class="wrap hero">
+                <h1>Jefferson Oliveira Araujo</h1>
+                <p class="hero-role">Programador e Marketing Digital</p>
+                <p class="hero-text">
+                    Estudante de Técnico em Informática para Internet, construindo projetos web
+                    e unindo tecnologia, negócios e comunicação.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+                    <a class="btn btn-secondary" href="#contato">Entrar em contato</a>
+                </div>
+            </div>
+        </section>
 
-    <p>Esse é o meu site</p>
 
-</footer>
+        <!-- SOBRE -->
+        <section id="sobre">
+            <div class="wrap">
+                <h2 class="section-title">Sobre mim</h2>
 
-    <script src="app.js"></script>
+                <div class="about-grid">
+
+                    <div class="about-text">
+                        <p>
+                            Sou apaixonado por tecnologia e estou construindo minha trajetória como futuro programador.
+                            Atualmente, curso o Técnico em Informática para Internet no SENAC Largo Treze, onde desenvolvo
+                            conhecimentos em programação, desenvolvimento de software e criação de soluções web.
+                        </p>
+                        <p>
+                            Busco constantemente ampliar minha formação e desenvolver uma visão multidisciplinar.
+                            Pela Fundação Bradesco, conquistei qualificações em Contabilidade Empresarial, Educação
+                            Financeira e Postura e Imagem Profissional, fortalecendo tanto meus conhecimentos técnicos
+                            quanto minha visão de negócios e postura no ambiente corporativo.
+                        </p>
+                        <p>
+                            Meu objetivo é continuar aprendendo, transformar conhecimentos em projetos e crescer
+                            profissionalmente na área de tecnologia, conectando programação, negócios e inovação.
+                        </p>
+                    </div>
+
+                    <aside class="about-aside" aria-labelledby="formacao-titulo">
+                        <h3 id="formacao-titulo">Formação e conquistas</h3>
+                        <ul class="timeline">
+                            <li>
+                                <strong>🌐  Técnico em Informática para Internet</strong>
+                                <span>• SENAC Largo Treze, em andamento</span>
+                            </li>
+                            <li>
+                                <strong>💻  Qualificações profissionais</strong>
+                                <span>
+                                    Fundação Bradesco: 
+                                    <br>• Contabilidade Empresarial;
+                                    <br>• Educação Financeira;
+                                    <br>• Postura e Imagem Profissional;
+                                    <br>• Análise de balanços;
+                                    <br>• Atendimento ao Público;
+                                    <br>• Soluções de IA no GitHub;
+                                </span>
+                            </li>
+                            <li>
+                                <strong>🏅  Medalha de bronze na OBA</strong>
+                                <span>• Olimpíada Brasileira de Astronomia e Astronáutica</span>
+                            </li>
+                        </ul>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- HABILIDADES -->
+        <section id="habilidades">
+            <div class="wrap">
+                <h2 class="section-title">Habilidades</h2>
+
+                <div class="skills-grid">
+
+                    <div class="skill-panel">
+                        <h3>Técnicas</h3>
+
+                        <div class="skill-group">
+                            <h4>Desenvolvimento web</h4>
+                            <ul class="tags">
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>JavaScript</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-group">
+                            <h4>Pacote Office</h4>
+                            <ul class="tags">
+                                <li>Excel</li>
+                                <li>PowerPoint</li>
+                                <li>Word</li>
+                                <li>Microsoft 365</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-group">
+                            <h4>Design e organização</h4>
+                            <ul class="tags">
+                                <li>Canva</li>
+                                <li>Trello</li>
+                                <li>Miro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="skill-panel">
+                        <h3>Comportamentais</h3>
+                        <ul class="tags">
+                            <li>Comunicativo</li>
+                            <li>Proativo</li>
+                            <li>Compreensivo</li>
+                            <li>Atencioso</li>
+                            <li>Responsável</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PROJETOS -->
+        <section id="projetos">
+            <div class="wrap">
+                <h2 class="section-title">Projetos</h2>
+
+                <a class="project-card" href="https://jeffersonoli2003.github.io/Guia/" target="_blank" rel="noopener noreferrer">
+                    <h3>Meu Guia!</h3>
+                    <!-- DICA: troque esta frase por uma descrição real do projeto
+                         (o que ele faz e quais tecnologias você usou) -->
+                    <p>Projeto web desenvolvido com HTML, CSS e JavaScript.</p>
+                    <span class="project-link">Abrir projeto online</span>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- CONTATO -->
+        <section id="contato">
+            <div class="wrap">
+                <h2 class="section-title">Contato</h2>
+                <p>
+                    Estou em busca de oportunidades para aprender e crescer na área de tecnologia.
+                    Se quiser conversar, é só escolher um dos canais abaixo.
+                </p>
+
+                <div class="contact-links">
+                    <!-- IMPORTANTE: troque pelos seus dados reais -->
+                    <a class="btn btn-primary" href="mailto:jefferson.oliveiraara@gmail.com">Enviar e-mail</a>
+
+                    <a class="btn btn-secondary" href="https://github.com/jeffersonoli2003" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+                    <a class="btn btn-secondary" href="https://www.linkedin.com/in/jefferson-oliveira-a97614431/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+
+                    <a class="btn btn-secondary" href="https://www.instagram.com/eagle_produtor/" target="_blank" rel="noopener noreferrer">Instagram</a>
+
+                    <a class="btn btn-secondary" href="https://wa.me//5511994928754?text=Ol%C3%A1%20Jefferson,%20tudo%20bem?" target="_blank" rel="noopener noreferrer">Whatsapp</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>© 2026 Jefferson Oliveira Araujo</p>
+        </div>
+    </footer>
+
+    <script src="app.js" defer></script>
 </body>
 
 </html>

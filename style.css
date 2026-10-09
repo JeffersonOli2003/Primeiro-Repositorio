@@ -1,603 +1,514 @@
-/* CONFIGURAÇÕES GERAIS */
+/* ==========================================================
+   PORTFÓLIO – Jefferson Oliveira Araujo
+   Organização:
+   1. Variáveis (cores e fontes) e tema claro/escuro
+   2. Base
+   3. Cabeçalho e menu
+   4. Início
+   5. Sobre mim
+   6. Habilidades
+   7. Projetos
+   8. Contato e rodapé
+   9. Responsivo e acessibilidade
+   ========================================================== */
+
+
+/* ---------- 1. VARIÁVEIS ----------
+   Para mudar o visual do site inteiro, altere só estas cores. */
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --text: #0b1330;
+    --muted: #4a5578;
+    --line: #d9e0f0;
+    --accent: #0b57d0;
+    --accent-soft: #e5eeff;
+    --on-accent: #ffffff;
+
+    --font-title: "Sora", "Segoe UI", Verdana, sans-serif;
+    --font-body: "Figtree", "Segoe UI", Verdana, sans-serif;
+
+    --wrap: 1080px;
+    --header-h: 68px;
+}
+
+/* Tema escuro (ativado pelo botão ou pela preferência do sistema) */
+:root[data-theme="dark"] {
+    --bg: #070c24;
+    --surface: #0d1534;
+    --text: #e9edfb;
+    --muted: #a3afd3;
+    --line: #1d2850;
+    --accent: #4aa8ff;
+    --accent-soft: #11224d;
+    --on-accent: #04122b;
+}
+
+
+/* ---------- 2. BASE ---------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-/* ================================
-   ANIMAÇÕES (keyframes)
-   ================================ */
-
-/* Entrada do texto da apresentação: sobe e aparece */
-@keyframes entrada {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Menu desce suavemente ao carregar a página */
-@keyframes menuDesce {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-/* Linha do subtítulo que se desenha da esquerda pra direita */
-@keyframes linhaCresce {
-    from {
-        transform: scaleX(0);
-    }
-    to {
-        transform: scaleX(1);
-    }
-}
-
-
-/*CORPO DO SITE */
-#simples{
-     background-color: rgba(0, 0, 0, 0);
-     color: #FFFFFF;
-     position: absolute;
-     top: 25px;
-     border: none;
-     cursor: pointer;
-     transition: 1.0s;
-
-}
-#simples:hover{
-    scale: 150%;
-    rotate: 20deg;
-
-    background-color: #ffffff00;
-
-}
-#simples:active{
-    scale: 120%;
-    rotate: 360deg;
-}
-
-.modoClaro{
-    /* Cor de fundo da página */
-    background-color: #010135;
-    /* Cor padrão dos textos */
-    color: #FFFFFF;
-}
-.modoEscuro{
-    /* Cor de fundo da página */
-    background-color: #0000ff;
-    /* Cor padrão dos textos */
-    color: #FFFFFF;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
 }
 
 body {
-    /* Fonte principal do site */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-
-    /* Faz a página ocupar pelo menos a altura da tela */
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text);
+    background-color: var(--bg);
     min-height: 100vh;
-
-    /* Troca de modo claro/escuro acontece suave */
-    transition: background-color 0.6s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Rolagem suave quando clica nos links do menu */
-html {
-    scroll-behavior: smooth;
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
+a {
+    color: inherit;
+}
 
-/*MENU*/
+ul {
+    list-style: none;
+}
 
-/* Cabeçalho */
-header {
+.wrap {
     width: 100%;
-
-    /* Cor azul do menu */
-    background-color: #0215bd;
-
-    /* Espaçamento interno */
-    padding: 25px;
-
-    /* Deixa o menu fixo no topo */
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    /* Faz o menu ficar acima dos outros elementos */
-    z-index: 1000;
-
-    /* Animação de entrada do menu */
-    animation: menuDesce 0.7s ease-out both;
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-
-/* Área onde ficam os links */
-nav {
-    display: flex;
-
-    /* Centraliza os links */
-    justify-content: center;
-
-    /* Alinha verticalmente */
-    align-items: center;
-
-    /* Espaço entre os links */
-    gap: 40px;
-
+section {
+    padding: 96px 0;
 }
 
+.section-title {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin-bottom: 40px;
+}
 
-/* Links do menu */
-nav a {
-    /* Cor do texto */
-    color: #ffffff;
+/* Foco visível para quem navega pelo teclado */
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
 
-    /* Retira o sublinhado */
+/* Link "pular para o conteúdo" (só aparece com o teclado) */
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    background: var(--accent);
+    color: var(--on-accent);
+    padding: 10px 16px;
+    border-radius: 6px;
+    z-index: 2000;
     text-decoration: none;
-
-    /* Deixa o texto em maiúsculo */
-    text-transform: uppercase;
-
-    /* Deixa o texto em negrito */
-    font-weight: bold;
-
-    /* Tamanho da letra */
-    font-size: 16px;
-
-    /* Necessário para posicionar a linha animada */
-    position: relative;
+    font-weight: 600;
+}
+.skip-link:focus {
+    top: 12px;
 }
 
-/* Linha que cresce embaixo do link (no lugar do sublinhado) */
-nav a::after {
+
+/* ---------- 3. CABEÇALHO E MENU ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-list a {
+    position: relative;
+    display: inline-block;
+    padding: 6px 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+/* Linha que aparece embaixo do link atual ou ao passar o mouse */
+.nav-list a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -6px;
+    bottom: 0;
     width: 100%;
     height: 2px;
-    background-color: #ffffff;
-
+    background-color: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.35s ease;
-}
-
-
-/* Quando passar o mouse no link */
-nav a:hover::after,
-nav a:focus-visible::after {
-    transform: scaleX(1);
-}
-
-
-/* ================================
-   APRESENTAÇÃO
-   ================================ */
-
-#apres {
-    /* Altura mínima da seção */
-    min-height: 400px;
-
-    /* Espaço para não ficar escondido atrás
-       do menu fixo */
-    padding-top: 150px;
-
-    /* Espaço do lado esquerdo */
-    padding-left: 50px;
-
-    /* Usa Flexbox */
-    display: flex;
-
-    /* Centraliza verticalmente */
-    align-items: center;
-}
-
-
-/* Título principal */
-.apresentacao h1 { /* AQUI É MEU NOME*/
-    font-size: 45px;
-
-    /* Espaço abaixo do título */
-    margin-bottom: 15px;
-
-    /* Entra primeiro */
-    animation: entrada 0.9s ease-out 0.4s both;
-}
-
-
-/* Subtítulo */
-.apresentacao h2 { /* AQUI É O QUE EU SOU*/
-    font-size: 25px;
-
-    /* Azul claro */
-    color: #028efa;
-
-    /* Entra logo depois do nome */
-    animation: entrada 0.9s ease-out 0.75s both;
-}
-
-/* Linha azul que se desenha embaixo do subtítulo */
-.apresentacao h2::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 3px;
-    margin-top: 10px;
-    background-color: #028efa;
-
-    transform-origin: left;
-    animation: linhaCresce 0.9s ease-out 1.3s both;
-}
-
-
-/* ================================
-   SOBRE MIM
-   ================================ */
-
-#sobre {
-    /* Espaçamento interno */
-    padding: 80px 50px;
-
-    /* Flexbox */
-    display: flex;
-
-    /* Centraliza o conteúdo */
-    justify-content: center;
-}
-
-
-/* Área do texto */
-.sobreTexto {
-    /* Impede que o texto fique muito largo */
-    max-width: 900px;
-    /* Isso aqui faz o texto descer */
-    margin-top: 200px;
-}
-
-
-/* Título "Sobre mim" */
-.sobreTexto h3 {
-    font-size: 30px;
-
-    margin-bottom: 25px;
-}
-
-
-/* Parágrafo */
-.sobreTexto p {
-    font-size: 17px;
-
-    /* Espaçamento entre as linhas */
-    line-height: 1.8;
-
-    /* Deixa o texto justificado */
-    text-align: justify;
-}
-
-
-/* ================================
-   HABILIDADES
-   ================================ */
-
-#habil {
-    padding: 80px 50px;
-
-    /* Centraliza os textos */
-    text-align: center;
-}
-
-
-/* Título da seção */
-#habil h3 {
-    font-size: 30px;
-
-    margin-bottom: 50px;
-}
-
-
-/* Container das habilidades */
-.skillsContainer {
-    display: flex;
-
-    /* Centraliza os blocos */
-    justify-content: center;
-
-    /* Espaço entre os blocos */
-    gap: 50px;
-}
-
-
-/* Cada bloco de habilidade */
-.skillBlock {
-    width: 300px;
-
-    /* Fundo azul escuro */
-    background-color: #00235f;
-
-    /* Arredonda os cantos */
-    border-radius: 10px;
-
-    /* Espaçamento interno */
-    padding: 30px;
-
-    /* Texto alinhado à esquerda */
-    text-align: left;
-
-    /* Transição suave do hover */
-    transition: scale 0.4s ease, background-color 0.4s ease,
-                color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.skillBlock:hover{
-    scale: 105%;
-    color: black;
-    background-color: white;
-    box-shadow: 0 12px 30px rgba(2, 142, 250, 0.35);
-}
-
-/* Título dentro do bloco */
-.skillBlock h4 {
-    color: #028efa;
-
-    font-size: 22px;
-
-    margin-bottom: 20px;
-
-    text-align: center;
-}
-
-
-/* Lista */
-.skillBlock ul {
-    padding-left: 20px;
-}
-
-
-/* Itens da lista */
-.skillBlock li {
-    margin-bottom: 10px;
-
-    /* Item anda um pouquinho quando o bloco está em hover */
     transition: transform 0.3s ease;
 }
 
-.skillBlock:hover li {
-    transform: translateX(6px);
+.nav-list a:hover,
+.nav-list a[aria-current="true"] {
+    color: var(--text);
 }
 
-/* Os itens vão em sequência (efeito cascata) */
-.skillBlock:hover li:nth-child(2) { transition-delay: 0.04s; }
-.skillBlock:hover li:nth-child(3) { transition-delay: 0.08s; }
-.skillBlock:hover li:nth-child(4) { transition-delay: 0.12s; }
-.skillBlock:hover li:nth-child(5) { transition-delay: 0.16s; }
-.skillBlock:hover li:nth-child(6) { transition-delay: 0.20s; }
-
-
-/* ================================
-   RODAPÉ
-   ================================ */
-
-footer {
-    background-color: #00235f;
-
-    padding: 40px;
-
-    /* Centraliza o conteúdo */
-    text-align: center;
-
-    /* Espaço acima do rodapé */
-    margin-top: 50px;
+.nav-list a:hover::after,
+.nav-list a[aria-current="true"]::after {
+    transform: scaleX(1);
 }
 
+/* Botão de trocar o tema */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
 
-/* Título do rodapé */
-footer h5 {
-    font-size: 20px;
-
-    margin-bottom: 10px;
+.theme-toggle:hover {
+    border-color: var(--accent);
+    background-color: var(--accent-soft);
 }
 
 
-/* Texto do rodapé */
-footer p {
-    color: #028efa;
-}
-
-.projeto{
-    text-align: center;
-}
-
-/* ================================
-   PROJETOS (bloco flutuante)
-   ================================ */
-
-@keyframes flutua {
-    0%, 100% {
-        translate: 0 0;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-    }
-    50% {
-        translate: 0 -14px;
-        box-shadow: 0 28px 32px rgba(0, 0, 0, 0.25);
-    }
-}
-
-#projetos {
-    padding: 80px 50px;
-
+/* ---------- 4. INÍCIO ---------- */
+#inicio {
+    min-height: calc(100vh - var(--header-h));
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 40px;
+    padding: 64px 0;
 }
 
-/* Bloco do projeto */
-.projetoBloco {
+.hero h1 {
+    font-size: clamp(2.5rem, 7vw, 4.75rem);
+    font-weight: 700;
+    max-width: 14ch;
+    animation: subir 0.8s ease-out 0.1s both;
+}
+
+.hero-role {
+    margin-top: 20px;
+    font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+    font-weight: 500;
+    color: var(--accent);
+    width: fit-content;
+    animation: subir 0.8s ease-out 0.35s both;
+}
+
+/* Linha que se desenha embaixo da profissão */
+.hero-role::after {
+    content: "";
     display: block;
-    width: 300px;
-    padding: 30px;
+    height: 3px;
+    margin-top: 12px;
+    background-color: var(--accent);
+    transform-origin: left;
+    animation: desenhar 0.9s ease-out 0.9s both;
+}
 
-    background-color: #00235f;
-    border-radius: 10px;
-    border: 1px solid #028efa;
+.hero-text {
+    margin-top: 28px;
+    max-width: 52ch;
+    color: var(--muted);
+    animation: subir 0.8s ease-out 0.6s both;
+}
 
-    color: #ffffff;
+.hero-actions {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    animation: subir 0.8s ease-out 0.8s both;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
     text-decoration: none;
-    text-align: center;
-
-    /* Fica flutuando sem parar */
-    animation: flutua 4s ease-in-out infinite;
-
-    transition: scale 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.projetoBloco h4 {
-    font-size: 22px;
-    color: #028efa;
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--on-accent);
+}
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent);
+}
+
+.btn-secondary {
+    color: var(--accent);
+    background-color: transparent;
+}
+.btn-secondary:hover {
+    background-color: var(--accent-soft);
+}
+
+@keyframes subir {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes desenhar {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+
+/* ---------- 5. SOBRE MIM ---------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.about-text p {
+    max-width: 62ch;
+    color: var(--muted);
+}
+
+.about-text p + p {
+    margin-top: 20px;
+}
+
+.about-text p:first-child {
+    color: var(--text);
+    font-size: 1.15rem;
+}
+
+.about-aside {
+    padding: 28px;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.about-aside h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.timeline li {
+    padding-left: 18px;
+    border-left: 2px solid var(--line);
+}
+
+.timeline li + li {
+    margin-top: 20px;
+}
+
+.timeline strong {
+    display: block;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.timeline span {
+    font-size: 0.93rem;
+    color: var(--muted);
+}
+
+
+/* ---------- 6. HABILIDADES ---------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+}
+
+.skill-panel {
+    padding: 32px;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.skill-panel > h3 {
+    font-size: 1.3rem;
+    margin-bottom: 24px;
+}
+
+.skill-group + .skill-group {
+    margin-top: 24px;
+}
+
+.skill-group h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--muted);
     margin-bottom: 10px;
-    transition: color 0.4s ease;
 }
 
-/* Ao passar o mouse: para de flutuar e vem pra frente */
-.projetoBloco:hover,
-.projetoBloco:focus-visible {
-    animation-play-state: paused;
-    scale: 108%;
-    background-color: #ffffff;
-    color: #000000;
+/* Etiquetas das habilidades */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.projetoBloco:hover h4,
-.projetoBloco:focus-visible h4 {
-    color: #0215bd;
+.tags li {
+    padding: 6px 14px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    background-color: var(--accent-soft);
+    border-radius: 999px;
 }
 
 
-/* ================================
-   ENTRADA AO ROLAR A PÁGINA
-   (só em navegadores que suportam;
-   nos outros, tudo aparece normal)
-   ================================ */
-
-@keyframes aparece {
-    from {
-        opacity: 0;
-        translate: 0 40px;
-    }
-    to {
-        opacity: 1;
-        translate: 0 0;
-    }
+/* ---------- 7. PROJETOS ---------- */
+.project-card {
+    display: block;
+    max-width: 420px;
+    padding: 32px;
+    text-decoration: none;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
-@supports (animation-timeline: view()) {
-    .skillBlock {
-        animation: aparece linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 60%;
-    }
+.project-card:hover,
+.project-card:focus-visible {
+    border-color: var(--accent);
+    transform: translateY(-4px);
 }
 
-.contato{
+.project-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.project-card p {
+    color: var(--muted);
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+
+/* ---------- 8. CONTATO E RODAPÉ ---------- */
+#contato p {
+    max-width: 52ch;
+    color: var(--muted);
+}
+
+.contact-links {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.site-footer {
+    padding: 32px 0;
     text-align: center;
-}
-/* ================================
-   CELULAR / TABLET
-   ================================ */
-
-/*
-   Essas regras serão usadas quando
-   a tela tiver no máximo 768px.
-*/
-
-@media (max-width: 768px) {
-
-    /* Diminui o espaço entre os links */
-    nav {
-        gap: 15px;
-    }
-
-
-    /* Diminui o tamanho dos links */
-    nav a {
-        font-size: 12px;
-    }
-
-
-    /* APRESENTAÇÃO NO CELULAR */
-    #apres {
-        padding-left: 25px;
-
-        /* Centraliza o texto */
-        text-align: center;
-
-        /* Centraliza horizontalmente */
-        justify-content: center;
-    }
-
-
-    /* Diminui o título */
-    .apresentacao h1 {
-        font-size: 30px;
-    }
-
-
-    /* Diminui o subtítulo */
-    .apresentacao h2 {
-        font-size: 18px;
-    }
-
-
-    /* SOBRE MIM */
-    #sobre {
-        padding: 50px 25px;
-    }
-
-
-    .sobreTexto p {
-        font-size: 15px;
-    }
-
-
-    /* HABILIDADES */
-
-    /* Coloca os blocos um embaixo do outro */
-    .skillsContainer {
-        flex-direction: column;
-
-        /* Centraliza os blocos */
-        align-items: center;
-    }
-
-
-    /* Ajusta a largura dos blocos */
-    .skillBlock {
-        width: 100%;
-
-        max-width: 350px;
-    }
+    font-size: 0.93rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
 }
 
 
-/* ================================
-   ACESSIBILIDADE
-   Quem desativa animações no sistema
-   não vê movimento nenhum.
-   ================================ */
+/* ---------- 9. RESPONSIVO E ACESSIBILIDADE ---------- */
+@media (max-width: 800px) {
+    section {
+        padding: 72px 0;
+    }
 
+    .about-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .about-grid {
+        gap: 40px;
+    }
+
+    .skills-grid {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    :root {
+        --header-h: 60px;
+    }
+
+    .wrap {
+        padding: 0 20px;
+    }
+
+    .header-inner {
+        gap: 12px;
+    }
+
+    .nav-list {
+        gap: 16px;
+    }
+
+    .nav-list a {
+        font-size: 0.85rem;
+    }
+
+    .skill-panel,
+    .about-aside,
+    .project-card {
+        padding: 24px;
+    }
+}
+
+/* Quem desativa animações no sistema não vê movimento */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
