@@ -1,0 +1,318 @@
+/* ==========================================================
+   PÁGINA DE CERTIFICADOS – Jefferson Oliveira Araujo
+   Organização:
+   1. Variáveis (cores e fontes) e tema claro/escuro
+   2. Base
+   3. Cabeçalho e menu
+   4. Certificados
+   5. Rodapé
+   6. Responsivo e acessibilidade
+   ========================================================== */
+
+
+/* ---------- 1. VARIÁVEIS ----------
+   Mantenha iguais às do style.css para o visual ser o mesmo. */
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --text: #0b1330;
+    --muted: #4a5578;
+    --line: #d9e0f0;
+    --accent: #0b57d0;
+    --accent-soft: #e5eeff;
+    --on-accent: #ffffff;
+
+    --font-title: "Sora", "Segoe UI", Verdana, sans-serif;
+    --font-body: "Figtree", "Segoe UI", Verdana, sans-serif;
+
+    --wrap: 1080px;
+    --header-h: 68px;
+}
+
+:root[data-theme="dark"] {
+    --bg: #070c24;
+    --surface: #0d1534;
+    --text: #e9edfb;
+    --muted: #a3afd3;
+    --line: #1d2850;
+    --accent: #4aa8ff;
+    --accent-soft: #11224d;
+    --on-accent: #04122b;
+}
+
+
+/* ---------- 2. BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text);
+    background-color: var(--bg);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 96px 0;
+}
+
+.section-title {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin-bottom: 40px;
+}
+
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    background: var(--accent);
+    color: var(--on-accent);
+    padding: 10px 16px;
+    border-radius: 6px;
+    z-index: 2000;
+    text-decoration: none;
+    font-weight: 600;
+}
+.skip-link:focus {
+    top: 12px;
+}
+
+
+/* ---------- 3. CABEÇALHO E MENU ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-list a {
+    position: relative;
+    display: inline-block;
+    padding: 6px 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-list a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-list a:hover,
+.nav-list a[aria-current="true"] {
+    color: var(--text);
+}
+
+.nav-list a:hover::after,
+.nav-list a[aria-current="true"]::after {
+    transform: scaleX(1);
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+    background-color: var(--accent-soft);
+}
+
+
+/* ---------- 4. CERTIFICADOS ---------- */
+.page-intro {
+    max-width: 60ch;
+    margin: -16px 0 40px;
+    color: var(--muted);
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.cert-card {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.cert-card:hover,
+.cert-card:focus-visible {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.cert-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background-color: var(--accent-soft);
+    border-bottom: 1px solid var(--line);
+}
+
+.cert-body {
+    padding: 24px;
+}
+
+.cert-body h2 {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+
+.cert-meta {
+    font-size: 0.93rem;
+    color: var(--muted);
+}
+
+.cert-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+
+/* ---------- 5. RODAPÉ ---------- */
+.site-footer {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 0.93rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+}
+
+
+/* ---------- 6. RESPONSIVO E ACESSIBILIDADE ---------- */
+@media (max-width: 800px) {
+    section {
+        padding: 72px 0;
+    }
+}
+
+@media (max-width: 560px) {
+    :root {
+        --header-h: 60px;
+    }
+
+    .wrap {
+        padding: 0 20px;
+    }
+
+    .header-inner {
+        gap: 12px;
+    }
+
+    .nav-list {
+        gap: 16px;
+    }
+
+    .nav-list a {
+        font-size: 0.85rem;
+    }
+
+    .cert-body {
+        padding: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
